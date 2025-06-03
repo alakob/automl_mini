@@ -1,0 +1,16 @@
+name: Status Check
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+
+jobs:
+  status:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Status Check
+      run: |
+        echo "✅ Repository status check passed"
+        echo "This provides a simple status indicator for the repository"

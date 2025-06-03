@@ -1,0 +1,145 @@
+name: Deploy Documentation
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Setup Pages
+      uses: actions/configure-pages@v4
+
+    - name: Install uv
+      uses: astral-sh/setup-uv@v3
+      with:
+        version: "latest"
+
+    - name: Set up Python
+      run: uv python install 3.11
+
+    - name: Create virtual environment
+      run: uv venv --python 3.11
+
+    - name: Install dependencies
+      run: |
+        uv pip install -e ".[dev]"
+
+    - name: Generate test coverage
+      run: |
+        make test-cov
+
+    - name: Install Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+
+    - name: Install documentation dependencies
+      run: |
+        npm install -g @marp-team/marp-cli
+        npm install -g markdown-to-html-cli
+
+    - name: Create docs directory
+      run: mkdir -p docs
+
+    - name: Build documentation site
+      run: |
+        # Create index.html from README.md
+        markdown-to-html --source README.md --output docs/index.html --github-corners https://github.com/alakob/automl_mini
+
+        # Convert other markdown files
+        markdown-to-html --source ARCHITECTURE.md --output docs/architecture.html --github-corners https://github.com/alakob/automl_mini
+        markdown-to-html --source CONTRIBUTING.md --output docs/contributing.html --github-corners https://github.com/alakob/automl_mini
+        markdown-to-html --source automl_mini_overview.md --output docs/overview.html --github-corners https://github.com/alakob/automl_mini
+
+        # Copy CI/CD docs
+        mkdir -p docs/ci-cd
+        markdown-to-html --source .github/workflows/README.md --output docs/ci-cd/index.html --github-corners https://github.com/alakob/automl_mini
+
+        # Copy test coverage reports
+        cp -r htmlcov/ docs/coverage/
+
+        # Create navigation index
+        cat > docs/nav.html << 'EOF'
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <title>AutoML Mini Documentation</title>
+            <meta charset="utf-8">
+            <style>
+                body { font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; }
+                .nav-card { background: #f5f5f5; padding: 15px; margin: 10px 0; border-radius: 5px; }
+                .nav-card a { text-decoration: none; color: #0066cc; font-weight: bold; }
+                .nav-card p { margin: 5px 0 0 0; color: #666; }
+                .coverage-badge { background: #4c1; color: white; padding: 2px 6px; border-radius: 3px; font-size: 0.8em; }
+            </style>
+        </head>
+        <body>
+            <h1>🤖 AutoML Mini Documentation</h1>
+            <p>Welcome to the AutoML Mini documentation site. Navigate through the sections below:</p>
+
+            <div class="nav-card">
+                <a href="index.html">📖 Main Documentation</a>
+                <p>Complete README with usage examples and API reference</p>
+            </div>
+
+            <div class="nav-card">
+                <a href="architecture.html">🏗️ Architecture Guide</a>
+                <p>Detailed technical overview, SOLID principles, and design patterns</p>
+            </div>
+
+            <div class="nav-card">
+                <a href="coverage/index.html">📊 Test Coverage Report</a> <span class="coverage-badge">Interactive</span>
+                <p>Detailed test coverage analysis with line-by-line coverage details</p>
+            </div>
+
+            <div class="nav-card">
+                <a href="overview.html">📋 Project Overview</a>
+                <p>High-level project overview and context</p>
+            </div>
+
+            <div class="nav-card">
+                <a href="contributing.html">🤝 Contributing Guide</a>
+                <p>How to contribute to the project, development setup, and guidelines</p>
+            </div>
+
+            <div class="nav-card">
+                <a href="ci-cd/">🔄 CI/CD Documentation</a>
+                <p>GitHub Actions workflows and automation setup</p>
+            </div>
+
+            <hr>
+            <p><small>Generated automatically from repository documentation • <a href="https://github.com/alakob/automl_mini">View on GitHub</a></small></p>
+        </body>
+        </html>
+        EOF
+
+    - name: Upload artifact
+      uses: actions/upload-pages-artifact@v3
+      with:
+        path: docs
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+    - name: Deploy to GitHub Pages
+      id: deployment
+      uses: actions/deploy-pages@v4

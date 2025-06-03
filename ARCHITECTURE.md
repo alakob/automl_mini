@@ -1,10 +1,10 @@
-# AutoML Simple Architecture
+# AutoML Mini Architecture
 
-This document provides a detailed technical overview of AutoML Simple's architecture, design patterns, and implementation of SOLID principles based on the **actual implementation**.
+This document provides a detailed technical overview of AutoML Mini's architecture, design patterns, and implementation of SOLID principles based on the **actual implementation**.
 
-## 🏗️ Overall Architecture
+## 🏗️ Architecture Overview
 
-AutoML Simple follows a **layered architecture** with clear separation of concerns:
+AutoML Mini follows a **layered architecture** with clear separation of concerns:
 
 ```
 ┌─────────────────────────────────────┐
@@ -26,7 +26,7 @@ AutoML Simple follows a **layered architecture** with clear separation of concer
 
 ### Component Structure
 ```
-src/automl_simple/
+src/automl_mini/
 ├── __init__.py           # Public Interface
 ├── pipeline.py           # Main orchestration (AutoMLPipeline)
 ├── preprocessing.py      # Data preprocessing transformers

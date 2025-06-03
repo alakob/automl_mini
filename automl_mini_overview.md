@@ -1,12 +1,10 @@
-# AutoML Simple: A Streamlined, Production-Ready Python Library
+# AutoML Mini: A Streamlined, Production-Ready Python Library
 
-## 🎯 1: AutoML Simple Framework Overview
+## 🎯 1: AutoML Mini Framework Overview
 
-**Problem Statement:**
-Traditional AutoML libraries are often over-engineered for rapid prototyping and core functionality demonstration, creating complexity barriers and excessive development time that hinder quick ML workflow implementation and technical assessment delivery.
+**Focused Problem Solving**
 
-**Solution:**
-AutoML Simple provides a streamlined, focused implementation of essential automated machine learning workflows, including intelligent data preprocessing, simple model selection, and cross-validation evaluation. This simplified solution demonstrates production-ready engineering practices within a **4-5 hour development timeframe** while maintaining code quality and extensibility.
+AutoML Mini provides a streamlined, focused implementation of essential automated machine learning workflows, including intelligent data preprocessing, simple model selection, and cross-validation evaluation.
 
 ---
 
@@ -46,9 +44,9 @@ Input Data (Mixed Types)
 
 ---
 
-## 🏗️ 3: SOLID Principles in AutoML Simple
+## 🏗️ 3: SOLID Principles in AutoML Mini
 
-This document demonstrates how AutoML Simple exemplifies SOLID principles with simplified, focused implementations:
+This document demonstrates how AutoML Mini exemplifies SOLID principles with simplified, focused implementations:
 
 1. **S**ingle Responsibility Principle
 2. **O**pen/Closed Principle
@@ -62,10 +60,10 @@ This document demonstrates how AutoML Simple exemplifies SOLID principles with s
 
 ### "A class should have only one reason to change."
 
-AutoML Simple follows SRP with laser-focused class responsibilities:
+AutoML Mini follows SRP with laser-focused class responsibilities:
 
 ```python
-# From src/automl_simple/preprocessing.py
+# From src/automl_mini/preprocessing.py
 
 class BaseTransformer(ABC):
     """Abstract base for all transformers - defines interface only."""
@@ -108,10 +106,10 @@ class CategoricalTransformer(BaseTransformer):
 
 ### "Open for extension, closed for modification."
 
-AutoML Simple enables extension without modifying existing code:
+AutoML Mini enables extension without modifying existing code:
 
 ```python
-# From src/automl_simple/models.py
+# From src/automl_mini/models.py
 
 class ModelSelector:
     """Model selection system open for extension."""
@@ -151,7 +149,7 @@ class ModelSelector:
 All transformers are perfectly interchangeable:
 
 ```python
-# From src/automl_simple/preprocessing.py
+# From src/automl_mini/preprocessing.py
 
 def _create_transformers(self) -> Dict[FeatureType, BaseTransformer]:
     """Create transformers - any BaseTransformer works."""
@@ -190,10 +188,10 @@ def transform(self, X: pd.DataFrame) -> pd.DataFrame:
 
 ### "No client should be forced to depend on methods it does not use."
 
-AutoML Simple provides minimal, focused interfaces:
+AutoML Mini provides minimal, focused interfaces:
 
 ```python
-# From src/automl_simple/preprocessing.py
+# From src/automl_mini/preprocessing.py
 
 class BaseTransformer(ABC):
     """Minimal transformer interface - only what's needed."""
@@ -225,10 +223,10 @@ class BaseTransformer(ABC):
 
 ### "Depend on abstractions, not concretions."
 
-AutoML Simple depends on interfaces, not implementations:
+AutoML Mini depends on interfaces, not implementations:
 
 ```python
-# From src/automl_simple/pipeline.py
+# From src/automl_mini/pipeline.py
 
 class AutoMLPipeline:
     """High-level pipeline depends on abstractions."""
@@ -264,10 +262,10 @@ class AutoMLPipeline:
 
 ### Clean, Documented, Maintainable Code
 
-AutoML Simple exemplifies Python best practices in a simplified context:
+AutoML Mini exemplifies Python best practices in a simplified context:
 
 ```python
-# From src/automl_simple/utils.py
+# From src/automl_mini/utils.py
 
 def validate_data(X: pd.DataFrame, y: pd.Series) -> Tuple[pd.DataFrame, pd.Series]:
     """Validate input data for AutoML pipeline.
@@ -323,7 +321,7 @@ def validate_data(X: pd.DataFrame, y: pd.Series) -> Tuple[pd.DataFrame, pd.Serie
 
 ### Testing That Ensures Reliability in Simplified Context
 
-AutoML Simple maintains high testing standards with focused scope:
+AutoML Mini maintains high testing standards with focused scope:
 
 ```python
 # From tests/test_preprocessing.py

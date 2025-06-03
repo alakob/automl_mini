@@ -48,7 +48,7 @@ wheels = [
 ]
 
 [[package]]
-name = "automl-simple"
+name = "automl-mini"
 version = "1.0.0"
 source = { editable = "." }
 dependencies = [
@@ -120,7 +120,7 @@ docs = [
 
 [package.metadata]
 requires-dist = [
-    { name = "automl-simple", extras = ["dev", "docs"], marker = "extra == 'all'" },
+    { name = "automl-mini", extras = ["dev", "docs"], marker = "extra == 'all'" },
     { name = "bandit", marker = "extra == 'dev'", specifier = ">=1.7.0" },
     { name = "black", marker = "extra == 'dev'", specifier = ">=23.0.0" },
     { name = "flake8", marker = "python_full_version >= '3.9' and extra == 'dev'", specifier = ">=6.0.0" },

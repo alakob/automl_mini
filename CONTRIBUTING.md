@@ -1,6 +1,6 @@
-# Contributing to AutoML Simple
+# Contributing to AutoML Mini
 
-Thank you for your interest in contributing to AutoML Simple! This document provides guidelines for development and contribution.
+Thank you for your interest in contributing to AutoML Mini! This document provides guidelines for development and contribution.
 
 ## 🚀 Quick Setup
 
@@ -24,10 +24,10 @@ uv pip install -e ".[dev]"
 uv run python -m pytest tests/ -v
 
 # Run with coverage
-uv run python -m pytest tests/ --cov=automl_simple
+uv run python -m pytest tests/ --cov=automl_mini
 
 # Generate HTML coverage report
-uv run python -m pytest tests/ --cov=automl_simple --cov-report=html
+uv run python -m pytest tests/ --cov=automl_mini --cov-report=html
 open htmlcov/index.html  # View coverage report
 ```
 
@@ -244,4 +244,4 @@ def your_method(self, X: pd.DataFrame):
 
 ## 🏆 Recognition
 
-Contributors who follow these guidelines help maintain AutoML Simple as a high-quality, maintainable library that demonstrates production-ready development practices with proper SOLID principles and proven design patterns.
+Contributors who follow these guidelines help maintain AutoML Mini as a high-quality, maintainable library that demonstrates production-ready development practices with proper SOLID principles and proven design patterns.

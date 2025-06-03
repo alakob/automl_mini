@@ -1,11 +1,11 @@
 ![AutoML Logo](images/logo.png "AutoML Logo")
 
-# AutoML Simple
+# AutoML Mini
 
 > A streamlined automated machine learning library focusing on core functionality and best practices
 
 [![Python](https://img.shields.io/badge/python-3.8%2B-blue.svg)](https://www.python.org/downloads/)
-[![CI](https://github.com/alakob/automl_simple/actions/workflows/ci.yml/badge.svg)](https://github.com/alakob/automl_simple/actions/workflows/ci.yml)
+[![CI](https://github.com/alakob/automl_mini/actions/workflows/ci.yml/badge.svg)](https://github.com/alakob/automl_mini/actions/workflows/ci.yml)
 [![Tests](https://img.shields.io/badge/tests-75%20passing-green.svg)](tests/)
 [![Coverage](https://img.shields.io/badge/coverage-high-green.svg)](tests/)
 [![PEP 8](https://img.shields.io/badge/code%20style-PEP%208-blue.svg)](https://pep8.org/)
@@ -14,7 +14,7 @@
 
 ## 🎯 Overview
 
-AutoML Simple is a Python library designed for rapid prototyping and implementation of automated machine learning workflows. Built with **engineering best practices** in mind, it demonstrates clean architecture, comprehensive testing, and production-ready code quality following Python standards.
+AutoML Mini is a Python library designed for rapid prototyping and implementation of automated machine learning workflows. Built with **engineering best practices** in mind, it demonstrates clean architecture, comprehensive testing, and production-ready code quality following Python standards.
 
 ### Key Features
 
@@ -34,8 +34,8 @@ AutoML Simple is a Python library designed for rapid prototyping and implementat
 # 1. Install uv (if you don't have it)
 curl -LsSf https://astral.sh/uv/install.sh | sh
 
-# 2. Install AutoML Simple from GitHub
-uv pip install "automl_simple @ git+https://github.com/alakob/automl_simple.git"
+# 2. Install AutoML Mini from GitHub
+uv pip install "automl_mini @ git+https://github.com/alakob/automl_mini.git"
 
 # 3. Use it!
 ```
@@ -44,7 +44,7 @@ uv pip install "automl_simple @ git+https://github.com/alakob/automl_simple.git"
 from sklearn.datasets import load_iris
 from sklearn.model_selection import train_test_split
 
-from automl_simple import AutoMLPipeline
+from automl_mini import AutoMLPipeline
 
 # Load data and train
 iris = load_iris()
@@ -60,7 +60,7 @@ predictions = pipeline.predict(X_test)
 print(f"Test Accuracy: {pipeline.score(X_test, y_test):.3f}")
 ```
 
-**That's it!** AutoML Simple handles preprocessing, model selection, and evaluation automatically.
+**That's it!** AutoML Mini handles preprocessing, model selection, and evaluation automatically.
 
 For more detailed examples and configuration options, see the [Usage Examples](#-usage-examples) section below.
 
@@ -87,13 +87,13 @@ For more detailed examples and configuration options, see the [Usage Examples](#
 curl -LsSf https://astral.sh/uv/install.sh | sh
 
 # Install from GitHub
-uv pip install "automl_simple @ git+https://github.com/alakob/automl_simple.git"
+uv pip install "automl_mini @ git+https://github.com/alakob/automl_mini.git"
 ```
 
 ### Development Installation
 ```bash
-git clone https://github.com/alakob/automl_simple.git
-cd automl_simple
+git clone https://github.com/alakob/automl_mini.git
+cd automl_mini
 uv venv && source .venv/bin/activate
 uv pip install -e ".[dev]"
 ```
@@ -105,7 +105,7 @@ uv pip install -e ".[dev]"
 ```bash
 python -m venv .venv
 source .venv/bin/activate
-pip install "automl_simple @ git+https://github.com/alakob/automl_simple.git"
+pip install "automl_mini @ git+https://github.com/alakob/automl_mini.git"
 ```
 
 #### Prerequisites
@@ -126,7 +126,7 @@ from sklearn.datasets import load_iris
 from sklearn.model_selection import train_test_split
 import pandas as pd
 
-from automl_simple import AutoMLPipeline
+from automl_mini import AutoMLPipeline
 
 # Load the iris dataset (following scikit-learn naming conventions)
 iris = load_iris()
@@ -158,7 +158,7 @@ print(pipeline.format_feature_importance())
 
 ### Custom Configuration
 ```python
-from automl_simple import AutoMLPipeline, PipelineConfig, ProblemType
+from automl_mini import AutoMLPipeline, PipelineConfig, ProblemType
 
 # Advanced configuration following Python best practices
 config = PipelineConfig(
@@ -192,7 +192,7 @@ The library follows **SOLID principles** and implements proven **design patterns
 ### Core Components
 
 ```
-src/automl_simple/
+src/automl_mini/
 ├── __init__.py           # Public Interface (PEP 257 docstrings)
 ├── pipeline.py           # Main orchestration (AutoMLPipeline)
 ├── preprocessing.py      # Data preprocessing transformers
@@ -241,13 +241,13 @@ The library includes comprehensive testing with **75 test cases** following Pyth
 
 ```bash
 # Run all tests with coverage
-uv run python -m pytest tests/ --cov=automl_simple
+uv run python -m pytest tests/ --cov=automl_mini
 
 # Run specific test modules
 uv run python -m pytest tests/test_pipeline.py -v
 
 # Generate HTML coverage report
-uv run python -m pytest tests/ --cov=automl_simple --cov-report=html
+uv run python -m pytest tests/ --cov=automl_mini --cov-report=html
 ```
 
 ### Test Results
