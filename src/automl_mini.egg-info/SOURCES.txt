@@ -1,0 +1,17 @@
+README.md
+pyproject.toml
+setup.py
+src/automl_mini/__init__.py
+src/automl_mini/models.py
+src/automl_mini/pipeline.py
+src/automl_mini/preprocessing.py
+src/automl_mini/utils.py
+src/automl_mini.egg-info/PKG-INFO
+src/automl_mini.egg-info/SOURCES.txt
+src/automl_mini.egg-info/dependency_links.txt
+src/automl_mini.egg-info/not-zip-safe
+src/automl_mini.egg-info/requires.txt
+src/automl_mini.egg-info/top_level.txt
+tests/test_pipeline.py
+tests/test_preprocessing.py
+tests/test_utils.py
