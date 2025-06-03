@@ -64,7 +64,7 @@ jobs:
         # Convert other markdown files
         markdown-to-html --source ARCHITECTURE.md --output docs/architecture.html --github-corners https://github.com/alakob/automl_mini
         markdown-to-html --source CONTRIBUTING.md --output docs/contributing.html --github-corners https://github.com/alakob/automl_mini
-        markdown-to-html --source automl_mini_overview.md --output docs/overview.html --github-corners https://github.com/alakob/automl_mini
+        markdown-to-html --source docs/workflow.md --output docs/workflow.html --github-corners https://github.com/alakob/automl_mini
 
         # Copy CI/CD docs
         mkdir -p docs/ci-cd
@@ -103,13 +103,13 @@ jobs:
             </div>
 
             <div class="nav-card">
-                <a href="coverage/index.html">📊 Test Coverage Report</a> <span class="coverage-badge">Interactive</span>
-                <p>Detailed test coverage analysis with line-by-line coverage details</p>
+                <a href="workflow.html">🔄 Architecture Flow Diagram</a>
+                <p>Visual Mermaid diagram showing the complete AutoML Mini workflow</p>
             </div>
 
             <div class="nav-card">
-                <a href="overview.html">📋 Project Overview</a>
-                <p>High-level project overview and context</p>
+                <a href="coverage/index.html">📊 Test Coverage Report</a> <span class="coverage-badge">Interactive</span>
+                <p>Detailed test coverage analysis with line-by-line coverage details</p>
             </div>
 
             <div class="nav-card">
